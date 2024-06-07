@@ -11,6 +11,11 @@ type Query {
     getAllClientes: [Cliente],
     getClienteById(id: ID!): Cliente,
     
+    #Citas
+    getAllCitas: [Cita],
+    getCitaById(id: ID!): Cita,
+    
+    #Servicios
     getAllServicios: [Servicio],
     getServicioById(id: ID!): Servicio,
 }
@@ -31,6 +36,11 @@ type Mutation {
     createCliente(nombre: String!, apellido: String!, celular: String!, nit: String!, usuarioId: String!): Cliente,
     updateCliente(id: ID!, nombre: String, apellido: String, celular: String, nit: String, usuarioId: String): Cliente,
     deleteCliente(id: ID!): Boolean,
+    
+    #Citas
+    createCita(fecha: String!, hora: String!, estado: String!, usuarioId: String!, personalId: String!): Cita,
+    updateCita(id: ID!, fecha: String, hora: String, estado: String, usuarioId: String, personalId: String): Cita,
+    deleteCita(id: ID!): Boolean,
     
     #Servicio
     createServicio(nombre: String!, descripcion: String!, tarifaBase: Float!): Servicio,
@@ -64,6 +74,15 @@ type Cliente {
     celular: String,
     nit: String,
     usuarioId: String
+}
+
+type Cita {
+    id: ID,
+    fecha: String,
+    hora: String,
+    estado: String,
+    usuarioId: String,
+    personalId: String
 }
 
 type Servicio {
