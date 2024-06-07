@@ -10,14 +10,17 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "usuario")
-public class Usuario {
-	
+@Document(collection = "personal")
+public class Personal {
+
 	@Id
 	private String id;
-    private String nombreUsuario;
-    private String email;
-    private String password;
-    private String tipo;
-    
+	private String nombre;
+	private String apellido;
+	private String ci;
+	private String direccion;
+	private String celular;
+	private String fechaNacimiento;	
+	private String usuarioId;
+	
 }
