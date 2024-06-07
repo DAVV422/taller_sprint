@@ -1,12 +1,24 @@
 type Query {
+	#Usuario
     allUsuarios: [Usuario],
-    usuarioById(id: ID!): Usuario
+    usuarioById(id: ID!): Usuario,
+    
+    #Personal
+    getAllPersonal: [Personal],
+    getPersonalById(id: ID!): Personal,
 }
 
 type Mutation {
-    createUsuario(nombreUsuario: String!, email: String!, password: String!, tipo: String!): Usuario,
+
+	#Usuario
+    createUsuario(nombreUsuario: String!, email: String!, password: String!, tipo: String!, usuarioId: String!): Usuario,
     updateUsuario(id: ID!, nombreUsuario: String, email: String, password: String, tipo: String): Usuario,
-    deleteUsuario(id: ID!): Boolean
+    deleteUsuario(id: ID!): Boolean,
+    
+    #Personal
+    createPersonal(nombre: String!, apellido: String!, ci: String!, direccion: String!, celular: String!, fechaNacimiento: String!, usuarioId: String!): Personal,
+    updatePersonal(id: ID!, nombre: String, apellido: String, ci: String, direccion: String, celular: String, fechaNacimiento: String): Personal,
+    deletePersonal(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -15,4 +27,15 @@ type Usuario {
     email: String,
     password: String,
     tipo: String
+}
+
+type Personal {
+    id: ID,
+    nombre: String,
+    apellido: String,
+    ci: String,
+    direccion: String,
+    celular: String,
+    fechaNacimiento: String,
+    usuarioId: String
 }
