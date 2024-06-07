@@ -6,6 +6,10 @@ type Query {
     #Personal
     getAllPersonal: [Personal],
     getPersonalById(id: ID!): Personal,
+    
+    #Cliente
+    getAllClientes: [Cliente],
+    getClienteById(id: ID!): Cliente,
 }
 
 type Mutation {
@@ -19,6 +23,11 @@ type Mutation {
     createPersonal(nombre: String!, apellido: String!, ci: String!, direccion: String!, celular: String!, fechaNacimiento: String!, usuarioId: String!): Personal,
     updatePersonal(id: ID!, nombre: String, apellido: String, ci: String, direccion: String, celular: String, fechaNacimiento: String): Personal,
     deletePersonal(id: ID!): Boolean,
+    
+    #Cliente
+    createCliente(nombre: String!, apellido: String!, celular: String!, nit: String!, usuarioId: String!): Cliente,
+    updateCliente(id: ID!, nombre: String, apellido: String, celular: String, nit: String, usuarioId: String): Cliente,
+    deleteCliente(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -37,5 +46,14 @@ type Personal {
     direccion: String,
     celular: String,
     fechaNacimiento: String,
+    usuarioId: String
+}
+
+type Cliente {
+    id: ID,
+    nombre: String,
+    apellido: String,
+    celular: String,
+    nit: String,
     usuarioId: String
 }
