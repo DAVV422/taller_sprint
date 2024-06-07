@@ -10,6 +10,9 @@ type Query {
     #Cliente
     getAllClientes: [Cliente],
     getClienteById(id: ID!): Cliente,
+    
+    getAllServicios: [Servicio],
+    getServicioById(id: ID!): Servicio,
 }
 
 type Mutation {
@@ -28,6 +31,11 @@ type Mutation {
     createCliente(nombre: String!, apellido: String!, celular: String!, nit: String!, usuarioId: String!): Cliente,
     updateCliente(id: ID!, nombre: String, apellido: String, celular: String, nit: String, usuarioId: String): Cliente,
     deleteCliente(id: ID!): Boolean,
+    
+    #Servicio
+    createServicio(nombre: String!, descripcion: String!, tarifaBase: Float!): Servicio,
+    updateServicio(id: ID!, nombre: String, descripcion: String, tarifaBase: Float): Servicio,
+    deleteServicio(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -56,4 +64,11 @@ type Cliente {
     celular: String,
     nit: String,
     usuarioId: String
+}
+
+type Servicio {
+    id: ID,
+    nombre: String,
+    descripcion: String,
+    tarifaBase: Float,
 }
