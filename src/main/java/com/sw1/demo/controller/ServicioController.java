@@ -31,7 +31,7 @@ public class ServicioController {
     }
 
     @MutationMapping
-    public Servicio createServicio(@Argument String nombre, @Argument String descripcion, @Argument String tipo, @Argument double tarifaBase) {
+    public Servicio createServicio(@Argument String nombre, @Argument String descripcion, @Argument String tipo, @Argument Double tarifaBase) {
         Servicio servicio = new Servicio();
         servicio.setNombre(nombre);
         servicio.setDescripcion(descripcion);
@@ -42,7 +42,7 @@ public class ServicioController {
     }
 
     @MutationMapping
-    public Servicio updateServicio(@Argument String id, @Argument String nombre, @Argument String descripcion, @Argument String tipo, @Argument double tarifaBase) {
+    public Servicio updateServicio(@Argument String id, @Argument String nombre, @Argument String descripcion, @Argument String tipo, @Argument Double tarifaBase) {
         Servicio servicioDetails = new Servicio();
         servicioDetails.setNombre(nombre);
         servicioDetails.setDescripcion(descripcion);
