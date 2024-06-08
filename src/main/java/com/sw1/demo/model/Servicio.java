@@ -16,5 +16,6 @@ public class Servicio {
     private String id;
     private String nombre;
     private String descripcion;
+    private String tipo;
     private double tarifaBase;
 }

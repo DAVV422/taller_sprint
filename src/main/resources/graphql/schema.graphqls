@@ -89,5 +89,6 @@ type Servicio {
     id: ID,
     nombre: String,
     descripcion: String,
+    tipo: String,
     tarifaBase: Float,
 }

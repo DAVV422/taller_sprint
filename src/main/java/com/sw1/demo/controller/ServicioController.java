@@ -31,20 +31,22 @@ public class ServicioController {
     }
 
     @MutationMapping
-    public Servicio createServicio(@Argument String nombre, @Argument String descripcion, @Argument double tarifaBase) {
+    public Servicio createServicio(@Argument String nombre, @Argument String descripcion, @Argument String tipo, @Argument double tarifaBase) {
         Servicio servicio = new Servicio();
         servicio.setNombre(nombre);
         servicio.setDescripcion(descripcion);
+        servicio.setTipo(tipo);
         servicio.setTarifaBase(tarifaBase);
         log.info("Create Servicio:", servicio.toString());
         return servicioService.createServicio(servicio);
     }
 
     @MutationMapping
-    public Servicio updateServicio(@Argument String id, @Argument String nombre, @Argument String descripcion, @Argument double tarifaBase) {
+    public Servicio updateServicio(@Argument String id, @Argument String nombre, @Argument String descripcion, @Argument String tipo, @Argument double tarifaBase) {
         Servicio servicioDetails = new Servicio();
         servicioDetails.setNombre(nombre);
         servicioDetails.setDescripcion(descripcion);
+        servicioDetails.setTipo(tipo);
         servicioDetails.setTarifaBase(tarifaBase);
         log.info("Update Servicio:", servicioDetails.toString());
         return servicioService.updateServicio(id, servicioDetails);

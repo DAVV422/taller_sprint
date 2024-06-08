@@ -24,6 +24,7 @@ public class ServicioService {
         if (servicio != null) {
             servicio.setNombre(servicioDetails.getNombre() != null ? servicioDetails.getNombre() : servicio.getNombre());
             servicio.setDescripcion(servicioDetails.getDescripcion() != null ? servicioDetails.getDescripcion() : servicio.getDescripcion());
+            servicio.setTipo(servicioDetails.getTipo() != null ? servicioDetails.getTipo() : servicio.getTipo());
             servicio.setTarifaBase(servicioDetails.getTarifaBase() != 0 ? servicioDetails.getTarifaBase() : servicio.getTarifaBase());
             return servicioRepository.save(servicio);
         }
