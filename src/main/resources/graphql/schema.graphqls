@@ -26,6 +26,10 @@ type Query {
     #Marca
     getAllMarcas: [Marca],
     getMarcaById(id: ID!): Marca,
+    
+    #Vehiculo
+    getAllVehiculos: [Vehiculo],
+    getVehiculoById(id: ID!): Vehiculo,
 }
 
 type Mutation {
@@ -63,7 +67,12 @@ type Mutation {
     #Marca    
     createMarca(nombre: String!, porcentaje: Float!): Marca,
     updateMarca(id: ID!, nombre: String, porcentaje: Float): Marca,
-    deleteMarca(id: ID!): Boolean
+    deleteMarca(id: ID!): Boolean,
+    
+    #Vehiculo
+    createVehiculo(matricula: String!, color: String!, descripcion: String!, modelo: String!, marcaId: String!): Vehiculo,
+    updateVehiculo(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Vehiculo,
+    deleteVehiculo(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -125,4 +134,14 @@ type Marca {
     id: ID
     nombre: String
     porcentaje: Float
+}
+
+
+type Vehiculo {
+    id: ID,
+    matricula: String,
+    color: String,
+    descripcion: String,
+    modelo: String,
+    marcaId: String
 }
