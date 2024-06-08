@@ -18,6 +18,10 @@ type Query {
     #Servicios
     getAllServicios: [Servicio],
     getServicioById(id: ID!): Servicio,
+    
+    #NotaVenta
+    getAllNotasVenta: [NotaVenta],
+    getNotaVentaById(id: ID!): NotaVenta,
 }
 
 type Mutation {
@@ -43,9 +47,14 @@ type Mutation {
     deleteCita(id: ID!): Boolean,
     
     #Servicio
-    createServicio(nombre: String!, descripcion: String!, tipo String!, tarifaBase: Float!): Servicio,
-    updateServicio(id: ID!, nombre: String, descripcion: String, tipo String!, tarifaBase: Float): Servicio,
+    createServicio(nombre: String!, descripcion: String!, tipo: String!, tarifaBase: Float!): Servicio,
+    updateServicio(id: ID!, nombre: String, descripcion: String, tipo: String!, tarifaBase: Float): Servicio,
     deleteServicio(id: ID!): Boolean,
+    
+    #NotaVenta
+    createNotaVenta(fecha: String!, total: Float!, saldo: Float!, interes: Float!): NotaVenta,
+    updateNotaVenta(id: ID!, fecha: String, total: Float, saldo: Float, interes: Float): NotaVenta,
+    deleteNotaVenta(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -91,4 +100,14 @@ type Servicio {
     descripcion: String,
     tipo: String,
     tarifaBase: Float,
+}
+
+type NotaVenta {
+    id: ID,
+    fecha: String,
+    total: Float,
+    saldo: Float,
+    interes: Float,
+    subtotal: Float,
+    codigoSeguimiento: String
 }
