@@ -22,6 +22,10 @@ type Query {
     #NotaVenta
     getAllNotasVenta: [NotaVenta],
     getNotaVentaById(id: ID!): NotaVenta,
+    
+    #Marca
+    getAllMarcas: [Marca],
+    getMarcaById(id: ID!): Marca,
 }
 
 type Mutation {
@@ -55,6 +59,11 @@ type Mutation {
     createNotaVenta(fecha: String!, total: Float!, saldo: Float!, interes: Float!): NotaVenta,
     updateNotaVenta(id: ID!, fecha: String, total: Float, saldo: Float, interes: Float): NotaVenta,
     deleteNotaVenta(id: ID!): Boolean,
+    
+    #Marca    
+    createMarca(nombre: String!, porcentaje: Float!): Marca,
+    updateMarca(id: ID!, nombre: String, porcentaje: Float): Marca,
+    deleteMarca(id: ID!): Boolean
 }
 
 type Usuario {
@@ -110,4 +119,10 @@ type NotaVenta {
     interes: Float,
     subtotal: Float,
     codigoSeguimiento: String
+}
+
+type Marca {
+    id: ID
+    nombre: String
+    porcentaje: Float
 }
