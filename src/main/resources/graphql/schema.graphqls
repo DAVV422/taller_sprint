@@ -43,8 +43,8 @@ type Mutation {
     deleteCita(id: ID!): Boolean,
     
     #Servicio
-    createServicio(nombre: String!, descripcion: String!, tarifaBase: Float!): Servicio,
-    updateServicio(id: ID!, nombre: String, descripcion: String, tarifaBase: Float): Servicio,
+    createServicio(nombre: String!, descripcion: String!, tipo String!, tarifaBase: Float!): Servicio,
+    updateServicio(id: ID!, nombre: String, descripcion: String, tipo String!, tarifaBase: Float): Servicio,
     deleteServicio(id: ID!): Boolean,
 }
 
