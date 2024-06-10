@@ -31,7 +31,7 @@ public class DetalleVentaServicioController {
     }
 
     @MutationMapping
-    public DetalleVentaServicio createDetalleVentaServicio(@Argument Float monto, @Argument String servicioId, @Argument String notaVentaId) {
+    public DetalleVentaServicio createDetalleVentaServicio(@Argument Double monto, @Argument String servicioId, @Argument String notaVentaId) {
         DetalleVentaServicio detalleVentaServicio = new DetalleVentaServicio();
         detalleVentaServicio.setMonto(monto);
         detalleVentaServicio.setServicioId(servicioId);
