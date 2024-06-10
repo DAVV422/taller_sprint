@@ -30,6 +30,10 @@ type Query {
     #Vehiculo
     getAllVehiculos: [Vehiculo],
     getVehiculoById(id: ID!): Vehiculo,
+    
+    #DetalleVentaServicio
+    getDetalleVentaServicioById(id: ID!): DetalleVentaServicio,
+    getAllDetalleVentaServicioOfNotaVenta(notaVentaId: ID!): [DetalleVentaServicio],    
 }
 
 type Mutation {
@@ -73,6 +77,10 @@ type Mutation {
     createVehiculo(matricula: String!, color: String!, descripcion: String!, modelo: String!, marcaId: String!): Vehiculo,
     updateVehiculo(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Vehiculo,
     deleteVehiculo(id: ID!): Boolean,
+    
+    #DetalleVentaServicio
+    createDetalleVentaServicio(monto: Float!, servicioId: String!, notaVentaId: String!): DetalleVentaServicio,
+    deleteDetalleVentaServicio(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -144,4 +152,11 @@ type Vehiculo {
     descripcion: String,
     modelo: String,
     marcaId: String
+}
+
+type DetalleVentaServicio {
+    id: ID,
+    monto: Float,
+    servicioId: String,
+    notaVentaId: String
 }
