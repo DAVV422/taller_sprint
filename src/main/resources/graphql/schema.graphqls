@@ -34,6 +34,10 @@ type Query {
     #DetalleVentaServicio
     getDetalleVentaServicioById(id: ID!): DetalleVentaServicio,
     getAllDetalleVentaServicioOfNotaVenta(notaVentaId: ID!): [DetalleVentaServicio],    
+    
+    #PlanDePago
+    getPlanDePagoById(id: ID!): PlanDePago,
+    getAllPlanesDePago: [PlanDePago],
 }
 
 type Mutation {
@@ -81,6 +85,11 @@ type Mutation {
     #DetalleVentaServicio
     createDetalleVentaServicio(monto: Float!, servicioId: String!, notaVentaId: String!): DetalleVentaServicio,
     deleteDetalleVentaServicio(id: ID!): Boolean,
+    
+    #PlanDePago
+    createPlanDePago(fechaInicio: String!, cantidadCuotas: Int!, montoCuota: Float!, tiempoCuota: String!, tipo: String!): PlanDePago,
+    updatePlanDePago(id: ID!, fechaInicio: String, cantidadCuotas: Int, montoCuota: Float, tiempoCuota: String, tipo: String): PlanDePago,
+    deletePlanDePago(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -159,4 +168,13 @@ type DetalleVentaServicio {
     monto: Float,
     servicioId: String,
     notaVentaId: String
+}
+
+type PlanDePago {
+    id: ID,
+    fechaInicio: String,
+    cantidadCuotas: Int,
+    montoCuota: Float,
+    tiempoCuota: String,
+    tipo: String,
 }
