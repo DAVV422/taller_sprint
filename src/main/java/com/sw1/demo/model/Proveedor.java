@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "servicios")
-public class Servicio {
+@Document(collection = "proveedor")
+public class Proveedor {
     @Id
     private Integer id;
     private String nombre;
+    private String direccion;
+    private String celular;
+    private String email;
     private String descripcion;
-    private String tipo;
-    private Double tarifaBase;
 }
