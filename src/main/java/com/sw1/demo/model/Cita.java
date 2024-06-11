@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "citas")
+@Document(collection = "cita")
 public class Cita {
     @Id
     private String id;
