@@ -31,12 +31,13 @@ public class PlanDePagoController {
     }
 
     @MutationMapping
-    public PlanDePago createPlanDePago(@Argument String fechaInicio, @Argument int cantidadCuotas, @Argument Double montoCuota, @Argument String tiempoCuota, @Argument String tipo) {
+    public PlanDePago createPlanDePago(@Argument String fechaInicio, @Argument int cantidadCuotas, @Argument Double montoCuota, @Argument String tiempoCuota, @Argument String tipo, @Argument String notaVentaId) {
         PlanDePago planDePago = new PlanDePago();
         planDePago.setFechaInicio(fechaInicio);
         planDePago.setCantidadCuotas(cantidadCuotas);
         planDePago.setMontoCuota(montoCuota);
         planDePago.setTiempoCuota(tiempoCuota);
+        planDePago.setNotaVentaId(notaVentaId);
         planDePago.setTipo(tipo);
         log.info("Create PlanDePago:", planDePago.toString());
         return planDePagoService.createPlanDePago(planDePago);
