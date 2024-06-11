@@ -49,5 +49,10 @@ public class UsuarioService {
 	public void deleteUsuario(String id) {
         usuarioRepository.deleteById(id);
     }
+	
+	public Usuario login(String email, String password) {
+		Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);		
+		return usuario;
+	}
 	 
 }

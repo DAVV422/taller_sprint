@@ -32,6 +32,12 @@ public class UsuarioController {
 		return usuarioService.getAllUsuarios();
 	}
 	
+	@QueryMapping
+	public Usuario login(@Argument String email, @Argument String password) {
+		log.info("login para email: ", email);
+		return usuarioService.login(email, password);
+	}
+	
 	@MutationMapping
 	public Usuario createUsuario(@Argument String nombreUsuario, @Argument String email, @Argument String password, @Argument String tipo) {
 		Usuario usuario = new Usuario();		
@@ -56,6 +62,6 @@ public class UsuarioController {
 	public Boolean deleteUsuario(@Argument String id) {
         usuarioService.deleteUsuario(id);
         return true;
-    }
+    }	
 	
 }

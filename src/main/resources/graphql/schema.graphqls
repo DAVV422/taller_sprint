@@ -2,6 +2,7 @@ type Query {
 	#Usuario
     allUsuarios: [Usuario],
     usuarioById(id: ID!): Usuario,
+    login(email: String!, password: String!): Usuario
     
     #Personal
     getAllPersonal: [Personal],
