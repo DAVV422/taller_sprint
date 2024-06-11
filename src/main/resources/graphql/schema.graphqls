@@ -42,6 +42,12 @@ type Query {
     #DetalleDePago
     getDetalleDePagoById(id: ID!): DetalleDePago,    
     getAllDetallesDePagoByPlanDePagoId(planDePagoId: ID!): [DetalleDePago],
+    
+    #OrdenDeTrabajo
+    getOrdenDeTrabajoById(id: ID!): OrdenDeTrabajo,    
+    getAllOrdenesDeTrabajo: [OrdenDeTrabajo],
+    getAllOrdenesDeTrabajoByDetalleVentaServicioId(detalleVentaServicioId: ID!): [OrdenDeTrabajo],
+    getAllOrdenesDeTrabajoByPersonalId(personalId: String!): [OrdenDeTrabajo],
 }
 
 type Mutation {
@@ -99,6 +105,11 @@ type Mutation {
     createDetalleDePago(fechaPago: String!, monto: Float!, estadoPago: String!, planDePagoId: String!): DetalleDePago,
     updateDetalleDePago(id: ID!, fechaPago: String, estadoPago: String): DetalleDePago,
     deleteDetalleDePago(id: ID!): Boolean,
+    
+    #OrdenDeTrabajo
+    createOrdenDeTrabajo(fechaInicio: String!, fechaFin: String!, estado: String!, observacion: String!, personalId: String!, detalleVentaServicioId: String!): OrdenDeTrabajo,
+    updateOrdenDeTrabajo(id: ID!, fechaInicio: String, fechaFin: String, estado: String, observacion: String, personalId: String, detalleVentaServicioId: String): OrdenDeTrabajo,
+    deleteOrdenDeTrabajo(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -195,4 +206,14 @@ type DetalleDePago {
     monto: Float,
     estadoPago: String,
     planDePagoId: String
+}
+
+type OrdenDeTrabajo {
+    id: ID
+    fechaInicio: String
+    fechaFin: String
+    estado: String
+    observacion: String
+    personalId: String
+    detalleVentaServicioId: String
 }
