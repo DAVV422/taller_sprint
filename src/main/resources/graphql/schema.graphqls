@@ -38,6 +38,10 @@ type Query {
     #PlanDePago
     getPlanDePagoById(id: ID!): PlanDePago,
     getAllPlanesDePago: [PlanDePago],
+    
+    #DetalleDePago
+    getDetalleDePagoById(id: ID!): DetalleDePago,    
+    getAllDetallesDePagoByPlanDePagoId(planDePagoId: ID!): [DetalleDePago],
 }
 
 type Mutation {
@@ -87,9 +91,14 @@ type Mutation {
     deleteDetalleVentaServicio(id: ID!): Boolean,
     
     #PlanDePago
-    createPlanDePago(fechaInicio: String!, cantidadCuotas: Int!, montoCuota: Float!, tiempoCuota: String!, tipo: String!): PlanDePago,
+    createPlanDePago(fechaInicio: String!, cantidadCuotas: Int!, montoCuota: Float!, tiempoCuota: String!, tipo: String!, notaVentaId: String!): PlanDePago,
     updatePlanDePago(id: ID!, fechaInicio: String, cantidadCuotas: Int, montoCuota: Float, tiempoCuota: String, tipo: String): PlanDePago,
     deletePlanDePago(id: ID!): Boolean,
+    
+    #DetallePlanDePago
+    createDetalleDePago(fechaPago: String!, monto: Float!, estadoPago: String!, planDePagoId: String!): DetalleDePago,
+    updateDetalleDePago(id: ID!, fechaPago: String, estadoPago: String): DetalleDePago,
+    deleteDetalleDePago(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -177,4 +186,13 @@ type PlanDePago {
     montoCuota: Float,
     tiempoCuota: String,
     tipo: String,
+    notaVentaId: String
+}
+
+type DetalleDePago {
+    id: ID,
+    fechaPago: String,
+    monto: Float,
+    estadoPago: String,
+    planDePagoId: String
 }
