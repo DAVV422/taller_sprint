@@ -10,13 +10,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "cita")
-public class Cita {
+@Document(collection = "ordenDeTrabajo")
+public class OrdenDeTrabajo {
     @Id
     private String id;
-    private String fecha;
-    private String hora;
+    private String fechaInicio;
+    private String fechaFin;
     private String estado;
-    private String usuarioId;
+    private String observacion;
     private String personalId;
+    private String detalleVentaServicioId;
 }
