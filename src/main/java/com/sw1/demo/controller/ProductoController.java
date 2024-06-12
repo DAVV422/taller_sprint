@@ -34,7 +34,7 @@ public class ProductoController {
     }
 
     @MutationMapping
-    public Producto createProducto(@Argument String nombre, @Argument String descripcion, @Argument BigDecimal precio, @Argument String stock) {
+    public Producto createProducto(@Argument String nombre, @Argument String descripcion, @Argument Float precio, @Argument String stock) {
     	Producto producto = new Producto();
         producto.setNombre(nombre);
         producto.setDescripcion(descripcion);
@@ -44,7 +44,7 @@ public class ProductoController {
     }
 
     @MutationMapping
-    public Producto updateProducto(@Argument String id,@Argument String nombre, @Argument String descripcion, @Argument BigDecimal precio, @Argument String stock) {
+    public Producto updateProducto(@Argument String id,@Argument String nombre, @Argument String descripcion, @Argument Float precio, @Argument String stock) {
     	Producto producto = new Producto();
     	producto.setId(id);
         producto.setNombre(nombre);

@@ -36,21 +36,21 @@ public class SalidaController {
     }
 
     @MutationMapping
-    public Salida createSalida(@Argument Date fecha, @Argument String motivo, @Argument String hora) {
+    public Salida createSalida(@Argument String fecha, @Argument String motivo, @Argument String hora) {
     	Salida Salida = new Salida();
         Salida.setFecha(fecha);
         Salida.setMotivo(motivo);
-        Salida.setHora(LocalTime.parse(hora));
+        Salida.setHora(hora);
     	return salidaService.createSalida(Salida);
     }
 
     @MutationMapping
-    public Salida updateSalida(@Argument String id,@Argument Date fecha,@Argument String motivo, @Argument String hora) {
+    public Salida updateSalida(@Argument String id,@Argument String fecha,@Argument String motivo, @Argument String hora) {
     	Salida Salida = new Salida();
     	Salida.setId(id);
         Salida.setFecha(fecha);
         Salida.setMotivo(motivo);
-        Salida.setHora(LocalTime.parse(hora));
+        Salida.setHora(hora);
         return salidaService.updateSalida(id, Salida);
     }
 

@@ -110,8 +110,8 @@ type Mutation {
     deleteVehiculo(id: ID!): Boolean,
     
     #Salida
-    createSalida(fecha: Date!, motivo: String!, hora: String!): Salida,
-    updateSalida(id : ID!,fecha: Date!, motivo: String!, hora: String!): Salida,
+    createSalida(fecha: String!, motivo: String!, hora: String!): Salida,
+    updateSalida(id : ID!,fecha: String!, motivo: String!, hora: String!): Salida,
     deleteSalida(id: ID!): Boolean,
     
     #DetalleSalida
@@ -121,12 +121,12 @@ type Mutation {
     
     #Proveedor
     createProveedor(nombre: String!, descripcion: String!, direccion: String!, celular: String!, email: String!): Proveedor,
-    updateProveedor(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Proveedor,
+    updateProveedor(id: ID!, nombre: String, descripcion: String, direccion: String, celular: String, email: String): Proveedor,
     deleteProveedor(id: ID!): Boolean,
     
 	#Producto
-	createProducto(nombre: String!, descripcion: String!, precio: BigDecimal!, stock: String!): Producto
-	updateProducto(id: String!, nombre: String!, descripcion: String!, precio: BigDecimal!, stock: String!): Producto
+	createProducto(nombre: String!, descripcion: String!, precio: Float!, stock: String!): Producto
+	updateProducto(id: String!, nombre: String!, descripcion: String!, precio: Float!, stock: String!): Producto
 	deleteProducto(id: String!): Boolean
 
     #DetalleVentaServicio
@@ -224,7 +224,7 @@ type Producto {
   id: ID
   nombre: String
   descripcion: String
-  precio: BigDecimal
+  precio: Float
   stock: String
 }
 
@@ -239,7 +239,7 @@ type Proveedor {
 
 type Salida {
   id: ID
-  fecha: Date
+  fecha: String
   motivo: String
   hora: String
 }

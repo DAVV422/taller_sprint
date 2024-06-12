@@ -1,6 +1,5 @@
 package com.sw1.demo.model;
 
-import java.sql.Date;
 import java.time.LocalTime;
 
 import org.springframework.data.annotation.Id;
@@ -18,7 +17,7 @@ public class Salida {
     
 	@Id
 	private String id;
-    private Date fecha;
+    private String fecha;
     private String motivo;
-    private LocalTime hora;
+    private String hora;
 }
