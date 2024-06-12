@@ -1,5 +1,7 @@
 package com.sw1.demo.model;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "servicio")
-public class Servicio {
+@Document(collection = "producto")
+public class Producto {
     @Id
     private Integer id;
     private String nombre;
     private String descripcion;
-    private String tipo;
-    private Double tarifaBase;
+    private BigDecimal precio;
+    private String stock;
 }

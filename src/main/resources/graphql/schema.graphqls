@@ -184,6 +184,35 @@ type Vehiculo {
     marcaId: String
 }
 
+type Producto {
+  id: Int
+  nombre: String
+  descripcion: String
+  precio: Float
+  stock: String
+}
+
+type Proveedor {
+  id: Int
+  nombre: String
+  direccion: String
+  celular: String
+  email: String
+  descripcion: String
+}
+
+type Salida {
+  id: Int
+  fecha: String
+  motivo: String
+  hora: String
+}
+
+type DetalleSalida {
+  id: Int
+  cantidad: Int
+}
+
 type DetalleVentaServicio {
     id: ID,
     monto: Float,
