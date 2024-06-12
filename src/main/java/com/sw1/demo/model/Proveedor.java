@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Document(collection = "proveedor")
 public class Proveedor {
     @Id
-    private Integer id;
+    private String id;
     private String nombre;
     private String direccion;
     private String celular;

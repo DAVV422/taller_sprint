@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Salida {
     
 	@Id
-	private Integer id;
+	private String id;
     private Date fecha;
     private String motivo;
     private LocalTime hora;

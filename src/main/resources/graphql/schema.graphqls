@@ -30,6 +30,22 @@ type Query {
     #Vehiculo
     getAllVehiculos: [Vehiculo],
     getVehiculoById(id: ID!): Vehiculo,
+    
+    #Salida
+    getAllSalida: [Salida],
+    getSalidaById(id: ID!): Salida,
+    
+    #DetalleSalida
+    getAllDetalleSalida: [DetalleSalida],
+    getDetalleSalidaById(id: ID!): DetalleSalida,
+    
+    #Proveedor
+    getAllProveedor: [Proveedor],
+    getProveedorById(id: ID!): Proveedor,
+    
+    #Producto
+    getAllProducto: [Producto],
+    getProductoById(id: ID!): Producto,
 }
 
 type Mutation {
@@ -73,6 +89,27 @@ type Mutation {
     createVehiculo(matricula: String!, color: String!, descripcion: String!, modelo: String!, marcaId: String!): Vehiculo,
     updateVehiculo(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Vehiculo,
     deleteVehiculo(id: ID!): Boolean,
+    
+    #Salida
+    createSalida(fecha: Date!, motivo: String!, hora: String!): Salida,
+    updateSalida(id : ID!,fecha: Date!, motivo: String!, hora: String!): Salida,
+    deleteSalida(id: ID!): Boolean,
+    
+    #DetalleSalida
+    createDetalleSalida(cantidad: String!): DetalleSalida,
+    updateDetalleSalida(id: ID!, cantidad: String): DetalleSalida,
+    deleteDetalleSalida(id: ID!): Boolean,
+    
+    #Proveedor
+    createProveedor(nombre: String!, descripcion: String!, direccion: String!, celular: String!, email: String!): Proveedor,
+    updateProveedor(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Proveedor,
+    deleteProveedor(id: ID!): Boolean,
+    
+	#Mutation 
+	createProducto(nombre: String!, descripcion: String!, precio: BigDecimal!, stock: String!): Producto
+	updateProducto(id: String!, nombre: String!, descripcion: String!, precio: BigDecimal!, stock: String!): Producto
+	deleteProducto(id: String!): Boolean
+
 }
 
 type Usuario {
@@ -147,15 +184,15 @@ type Vehiculo {
 }
 
 type Producto {
-  id: Int
+  id: ID
   nombre: String
   descripcion: String
-  precio: Float
+  precio: BigDecimal
   stock: String
 }
 
 type Proveedor {
-  id: Int
+  id: ID
   nombre: String
   direccion: String
   celular: String
@@ -164,14 +201,14 @@ type Proveedor {
 }
 
 type Salida {
-  id: Int
-  fecha: String
+  id: ID
+  fecha: Date
   motivo: String
   hora: String
 }
 
 type DetalleSalida {
-  id: Int
+  id: ID
   cantidad: Int
 }
 

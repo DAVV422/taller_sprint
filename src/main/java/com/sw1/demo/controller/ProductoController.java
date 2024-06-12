@@ -28,7 +28,7 @@ public class ProductoController {
     }
 
     @QueryMapping
-    public Producto getProductoById(@Argument Integer id) {
+    public Producto getProductoById(@Argument String id) {
         log.info("Query Producto by Id {}:", id);
         return productoService.getProductoById(id);
     }
@@ -44,7 +44,7 @@ public class ProductoController {
     }
 
     @MutationMapping
-    public Producto updateProducto(@Argument Integer id,@Argument String nombre, @Argument String descripcion, @Argument BigDecimal precio, @Argument String stock) {
+    public Producto updateProducto(@Argument String id,@Argument String nombre, @Argument String descripcion, @Argument BigDecimal precio, @Argument String stock) {
     	Producto producto = new Producto();
     	producto.setId(id);
         producto.setNombre(nombre);
@@ -55,7 +55,7 @@ public class ProductoController {
     }
 
     @MutationMapping
-    public Boolean deleteProducto(@Argument Integer id) {
+    public Boolean deleteProducto(@Argument String id) {
     	productoService.deleteProducto(id);
         return true;
     }
