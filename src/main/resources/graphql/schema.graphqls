@@ -2,6 +2,7 @@ type Query {
 	#Usuario
     allUsuarios: [Usuario],
     usuarioById(id: ID!): Usuario,
+    login(email: String!, password: String!): Usuario
     
     #Personal
     getAllPersonal: [Personal],
@@ -30,6 +31,24 @@ type Query {
     #Vehiculo
     getAllVehiculos: [Vehiculo],
     getVehiculoById(id: ID!): Vehiculo,
+    
+    #DetalleVentaServicio
+    getDetalleVentaServicioById(id: ID!): DetalleVentaServicio,
+    getAllDetalleVentaServicioOfNotaVenta(notaVentaId: ID!): [DetalleVentaServicio],    
+    
+    #PlanDePago
+    getPlanDePagoById(id: ID!): PlanDePago,
+    getAllPlanesDePago: [PlanDePago],
+    
+    #DetalleDePago
+    getDetalleDePagoById(id: ID!): DetalleDePago,    
+    getAllDetallesDePagoByPlanDePagoId(planDePagoId: ID!): [DetalleDePago],
+    
+    #OrdenDeTrabajo
+    getOrdenDeTrabajoById(id: ID!): OrdenDeTrabajo,    
+    getAllOrdenesDeTrabajo: [OrdenDeTrabajo],
+    getAllOrdenesDeTrabajoByDetalleVentaServicioId(detalleVentaServicioId: ID!): [OrdenDeTrabajo],
+    getAllOrdenesDeTrabajoByPersonalId(personalId: String!): [OrdenDeTrabajo],
 }
 
 type Mutation {
@@ -73,6 +92,25 @@ type Mutation {
     createVehiculo(matricula: String!, color: String!, descripcion: String!, modelo: String!, marcaId: String!): Vehiculo,
     updateVehiculo(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Vehiculo,
     deleteVehiculo(id: ID!): Boolean,
+    
+    #DetalleVentaServicio
+    createDetalleVentaServicio(monto: Float!, servicioId: String!, notaVentaId: String!): DetalleVentaServicio,
+    deleteDetalleVentaServicio(id: ID!): Boolean,
+    
+    #PlanDePago
+    createPlanDePago(fechaInicio: String!, cantidadCuotas: Int!, montoCuota: Float!, tiempoCuota: String!, tipo: String!, notaVentaId: String!): PlanDePago,
+    updatePlanDePago(id: ID!, fechaInicio: String, cantidadCuotas: Int, montoCuota: Float, tiempoCuota: String, tipo: String): PlanDePago,
+    deletePlanDePago(id: ID!): Boolean,
+    
+    #DetallePlanDePago
+    createDetalleDePago(fechaPago: String!, monto: Float!, estadoPago: String!, planDePagoId: String!): DetalleDePago,
+    updateDetalleDePago(id: ID!, fechaPago: String, estadoPago: String): DetalleDePago,
+    deleteDetalleDePago(id: ID!): Boolean,
+    
+    #OrdenDeTrabajo
+    createOrdenDeTrabajo(fechaInicio: String!, fechaFin: String!, estado: String!, observacion: String!, personalId: String!, detalleVentaServicioId: String!): OrdenDeTrabajo,
+    updateOrdenDeTrabajo(id: ID!, fechaInicio: String, fechaFin: String, estado: String, observacion: String, personalId: String, detalleVentaServicioId: String): OrdenDeTrabajo,
+    deleteOrdenDeTrabajo(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -175,3 +213,37 @@ type DetalleSalida {
   cantidad: Int
 }
 
+type DetalleVentaServicio {
+    id: ID,
+    monto: Float,
+    servicioId: String,
+    notaVentaId: String
+}
+
+type PlanDePago {
+    id: ID,
+    fechaInicio: String,
+    cantidadCuotas: Int,
+    montoCuota: Float,
+    tiempoCuota: String,
+    tipo: String,
+    notaVentaId: String
+}
+
+type DetalleDePago {
+    id: ID,
+    fechaPago: String,
+    monto: Float,
+    estadoPago: String,
+    planDePagoId: String
+}
+
+type OrdenDeTrabajo {
+    id: ID
+    fechaInicio: String
+    fechaFin: String
+    estado: String
+    observacion: String
+    personalId: String
+    detalleVentaServicioId: String
+}
