@@ -115,8 +115,8 @@ type Mutation {
     deleteSalida(id: ID!): Boolean,
     
     #DetalleSalida
-    createDetalleSalida(cantidad: String!): DetalleSalida,
-    updateDetalleSalida(id: ID!, cantidad: String): DetalleSalida,
+    createDetalleSalida(cantidad: Float,descripcion: String!): DetalleSalida,
+    updateDetalleSalida(id: ID!, cantidad: Float,descripcion: String!): DetalleSalida,
     deleteDetalleSalida(id: ID!): Boolean,
     
     #Proveedor
@@ -246,7 +246,8 @@ type Salida {
 
 type DetalleSalida {
   id: ID
-  cantidad: Int
+  cantidad: Float
+  descripcion: String
 }
 
 type DetalleVentaServicio {

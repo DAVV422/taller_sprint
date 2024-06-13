@@ -36,17 +36,19 @@ public class DetalleSalidaController {
     }
 
     @MutationMapping
-    public DetalleSalida createDetalleSalida(@Argument Integer cantidad) {
+    public DetalleSalida createDetalleSalida(@Argument Float cantidad,@Argument String descripcion) {
     	DetalleSalida DetalleSalida = new DetalleSalida();
     	DetalleSalida.setCantidad(cantidad);
+    	DetalleSalida.setDescripcion(descripcion);
     	return detalleSalidaService.createDetalleSalida(DetalleSalida);
     }
 
     @MutationMapping
-    public DetalleSalida updateDetalleSalida(@Argument String id,@Argument String cantidad) {
+    public DetalleSalida updateDetalleSalida(@Argument String id,@Argument Float cantidad,@Argument String descripcion) {
     	DetalleSalida DetalleSalida = new DetalleSalida();
     	DetalleSalida.setId(id);
-    	DetalleSalida.setCantidad(Integer.parseInt(cantidad));
+    	DetalleSalida.setCantidad(cantidad);
+    	DetalleSalida.setDescripcion(descripcion);
         return detalleSalidaService.updateDetalleSalida(id, DetalleSalida);
     }
 
