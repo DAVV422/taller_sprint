@@ -22,7 +22,7 @@ public class SalidaService {
         return salidaRepository.save(salida);
     }
 
-    public Salida updateSalida(Integer id, Salida salidaDetalle) {
+    public Salida updateSalida(String id, Salida salidaDetalle) {
     	Salida salida = salidaRepository.findById(id).orElse(null);
         if (salida != null) {
         	salida.setMotivo(salidaDetalle.getMotivo());
@@ -37,11 +37,11 @@ public class SalidaService {
         return salidaRepository.findAll();
     }
 
-    public Salida getSalidaById(Integer id) {
+    public Salida getSalidaById(String id) {
         return salidaRepository.findById(id).orElse(null);
     }
 
-    public void deleteSalida(Integer id) {
+    public void deleteSalida(String id) {
     	salidaRepository.deleteById(id);
     }
 }

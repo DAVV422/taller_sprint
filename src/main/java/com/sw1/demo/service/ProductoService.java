@@ -21,7 +21,7 @@ public class ProductoService {
         return productoRepository.save(producto);
     }
 
-    public Producto updateProducto(Integer id, Producto productoDetalle) {
+    public Producto updateProducto(String id, Producto productoDetalle) {
     	Producto producto = productoRepository.findById(id).orElse(null);
         if (producto != null) {
         	producto.setDescripcion(productoDetalle.getDescripcion());
@@ -37,11 +37,11 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
-    public Producto getProductoById(Integer id) {
+    public Producto getProductoById(String id) {
         return productoRepository.findById(id).orElse(null);
     }
 
-    public void deleteProducto(Integer id) {
+    public void deleteProducto(String id) {
     	productoRepository.deleteById(id);
     }
 }

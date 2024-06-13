@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import com.sw1.demo.model.DetalleSalida;
 
 @Repository
-public interface DetalleSalidaRepository extends MongoRepository<DetalleSalida, Integer> {
+public interface DetalleSalidaRepository extends MongoRepository<DetalleSalida, String> {
 }

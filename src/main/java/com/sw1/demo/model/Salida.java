@@ -1,6 +1,5 @@
 package com.sw1.demo.model;
 
-import java.sql.Date;
 import java.time.LocalTime;
 
 import org.springframework.data.annotation.Id;
@@ -17,8 +16,8 @@ import lombok.NoArgsConstructor;
 public class Salida {
     
 	@Id
-	private Integer id;
-    private Date fecha;
+	private String id;
+    private String fecha;
     private String motivo;
-    private LocalTime hora;
+    private String hora;
 }

@@ -32,6 +32,22 @@ type Query {
     getAllVehiculos: [Vehiculo],
     getVehiculoById(id: ID!): Vehiculo,
     
+    #Salida
+    getAllSalida: [Salida],
+    getSalidaById(id: ID!): Salida,
+    
+    #DetalleSalida
+    getAllDetalleSalida: [DetalleSalida],
+    getDetalleSalidaById(id: ID!): DetalleSalida,
+    
+    #Proveedor
+    getAllProveedor: [Proveedor],
+    getProveedorById(id: ID!): Proveedor,
+    
+    #Producto
+    getAllProducto: [Producto],
+    getProductoById(id: ID!): Producto,
+
     #DetalleVentaServicio
     getDetalleVentaServicioById(id: ID!): DetalleVentaServicio,
     getAllDetalleVentaServicioOfNotaVenta(notaVentaId: ID!): [DetalleVentaServicio],    
@@ -93,6 +109,26 @@ type Mutation {
     updateVehiculo(id: ID!, matricula: String, color: String, descripcion: String, modelo: String, marcaId: String): Vehiculo,
     deleteVehiculo(id: ID!): Boolean,
     
+    #Salida
+    createSalida(fecha: String!, motivo: String!, hora: String!): Salida,
+    updateSalida(id : ID!,fecha: String!, motivo: String!, hora: String!): Salida,
+    deleteSalida(id: ID!): Boolean,
+    
+    #DetalleSalida
+    createDetalleSalida(cantidad: String!): DetalleSalida,
+    updateDetalleSalida(id: ID!, cantidad: String): DetalleSalida,
+    deleteDetalleSalida(id: ID!): Boolean,
+    
+    #Proveedor
+    createProveedor(nombre: String!, descripcion: String!, direccion: String!, celular: String!, email: String!): Proveedor,
+    updateProveedor(id: ID!, nombre: String, descripcion: String, direccion: String, celular: String, email: String): Proveedor,
+    deleteProveedor(id: ID!): Boolean,
+    
+	#Producto
+	createProducto(nombre: String!, descripcion: String!, precio: Float!, stock: String!): Producto
+	updateProducto(id: String!, nombre: String!, descripcion: String!, precio: Float!, stock: String!): Producto
+	deleteProducto(id: String!): Boolean
+
     #DetalleVentaServicio
     createDetalleVentaServicio(monto: Float!, servicioId: String!, notaVentaId: String!): DetalleVentaServicio,
     deleteDetalleVentaServicio(id: ID!): Boolean,
@@ -185,7 +221,7 @@ type Vehiculo {
 }
 
 type Producto {
-  id: Int
+  id: ID
   nombre: String
   descripcion: String
   precio: Float
@@ -193,7 +229,7 @@ type Producto {
 }
 
 type Proveedor {
-  id: Int
+  id: ID
   nombre: String
   direccion: String
   celular: String
@@ -202,14 +238,14 @@ type Proveedor {
 }
 
 type Salida {
-  id: Int
+  id: ID
   fecha: String
   motivo: String
   hora: String
 }
 
 type DetalleSalida {
-  id: Int
+  id: ID
   cantidad: Int
 }
 

@@ -30,32 +30,32 @@ public class SalidaController {
     }
 
     @QueryMapping
-    public Salida getSalidaById(@Argument Integer id) {
+    public Salida getSalidaById(@Argument String id) {
         log.info("Query Salida by Id {}:", id);
         return salidaService.getSalidaById(id);
     }
 
     @MutationMapping
-    public Salida createSalida(@Argument Date fecha, @Argument String motivo, @Argument String hora) {
+    public Salida createSalida(@Argument String fecha, @Argument String motivo, @Argument String hora) {
     	Salida Salida = new Salida();
         Salida.setFecha(fecha);
         Salida.setMotivo(motivo);
-        Salida.setHora(LocalTime.parse(hora));
+        Salida.setHora(hora);
     	return salidaService.createSalida(Salida);
     }
 
     @MutationMapping
-    public Salida updateSalida(@Argument Integer id,@Argument Date fecha,@Argument String motivo, @Argument String hora) {
+    public Salida updateSalida(@Argument String id,@Argument String fecha,@Argument String motivo, @Argument String hora) {
     	Salida Salida = new Salida();
     	Salida.setId(id);
         Salida.setFecha(fecha);
         Salida.setMotivo(motivo);
-        Salida.setHora(LocalTime.parse(hora));
+        Salida.setHora(hora);
         return salidaService.updateSalida(id, Salida);
     }
 
     @MutationMapping
-    public Boolean deleteSalida(@Argument Integer id) {
+    public Boolean deleteSalida(@Argument String id) {
     	salidaService.deleteSalida(id);
         return true;
     }
