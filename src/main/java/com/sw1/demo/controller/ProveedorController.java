@@ -27,7 +27,7 @@ public class ProveedorController {
     }
 
     @QueryMapping
-    public Proveedor getProveedorById(@Argument Integer id) {
+    public Proveedor getProveedorById(@Argument String id) {
         log.info("Query Proveedor by Id {}:", id);
         return proveedorService.getProveedorById(id);
     }
@@ -44,7 +44,7 @@ public class ProveedorController {
     }
 
     @MutationMapping
-    public Proveedor updateProveedor(@Argument Integer id,@Argument String nombre, @Argument String descripcion, @Argument String direccion, @Argument String celular,@Argument String email) {
+    public Proveedor updateProveedor(@Argument String id,@Argument String nombre, @Argument String descripcion, @Argument String direccion, @Argument String celular,@Argument String email) {
     	Proveedor Proveedor = new Proveedor();
     	Proveedor.setId(id);
     	Proveedor.setNombre(nombre);
@@ -56,7 +56,7 @@ public class ProveedorController {
     }
 
     @MutationMapping
-    public Boolean deleteProveedor(@Argument Integer id) {
+    public Boolean deleteProveedor(@Argument String id) {
     	proveedorService.deleteProveedor(id);
         return true;
     }

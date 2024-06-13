@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Document(collection = "detalleSalida")
 public class DetalleSalida {
     @Id
-    private Integer id;
+    private String id;
     private Integer cantidad;
 }

@@ -21,7 +21,7 @@ public class DetalleSalidaService {
         return detalleSalidaRepository.save(detalleSalida);
     }
 
-    public DetalleSalida updateDetalleSalida(Integer id, DetalleSalida detalleSalidaDetalle) {
+    public DetalleSalida updateDetalleSalida(String id, DetalleSalida detalleSalidaDetalle) {
     	DetalleSalida detalleSalida = detalleSalidaRepository.findById(id).orElse(null);
         if (detalleSalida != null) {
         	detalleSalida.setCantidad(detalleSalidaDetalle.getCantidad());
@@ -34,11 +34,11 @@ public class DetalleSalidaService {
         return detalleSalidaRepository.findAll();
     }
 
-    public DetalleSalida getDetalleSalidaById(Integer id) {
+    public DetalleSalida getDetalleSalidaById(String id) {
         return detalleSalidaRepository.findById(id).orElse(null);
     }
 
-    public void deleteDetalleSalida(Integer id) {
+    public void deleteDetalleSalida(String id) {
     	detalleSalidaRepository.deleteById(id);
     }
 }

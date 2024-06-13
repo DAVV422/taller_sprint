@@ -27,7 +27,7 @@ public class DetalleSalidaController {
     }
 
     @QueryMapping
-    public DetalleSalida getDetalleSalidaById(@Argument Integer id) {
+    public DetalleSalida getDetalleSalidaById(@Argument String id) {
         log.info("Query DetalleSalida by Id {}:", id);
         return detalleSalidaService.getDetalleSalidaById(id);
     }
@@ -40,15 +40,15 @@ public class DetalleSalidaController {
     }
 
     @MutationMapping
-    public DetalleSalida updateDetalleSalida(@Argument Integer id,@Argument Integer cantidad) {
+    public DetalleSalida updateDetalleSalida(@Argument String id,@Argument String cantidad) {
     	DetalleSalida DetalleSalida = new DetalleSalida();
     	DetalleSalida.setId(id);
-    	DetalleSalida.setCantidad(cantidad);
+    	DetalleSalida.setCantidad(Integer.parseInt(cantidad));
         return detalleSalidaService.updateDetalleSalida(id, DetalleSalida);
     }
 
     @MutationMapping
-    public Boolean deleteDetalleSalida(@Argument Integer id) {
+    public Boolean deleteDetalleSalida(@Argument String id) {
     	detalleSalidaService.deleteDetalleSalida(id);
         return true;
     }
