@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sw1.demo.model.Cita;
 import com.sw1.demo.model.Proveedor;
 import com.sw1.demo.repository.ProveedorRepository;
 
