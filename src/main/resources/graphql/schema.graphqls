@@ -69,6 +69,10 @@ type Query {
     #NotaCompra
     getAllNotasCompra: [NotaCompra],
     getNotaCompraById(id: ID!): NotaCompra,
+    
+    #Entrada
+    getAllEntradas: [Entrada],
+    getEntradaById(id: ID!): Entrada,
 }
 
 type Mutation {
@@ -156,6 +160,11 @@ type Mutation {
     createNotaCompra(fecha: String!, montoTotal: Float!, personalId: String!): NotaCompra,
     updateNotaCompra(id: ID!, fecha: String, montoTotal: Float, personalId: String): NotaCompra,
     deleteNotaCompra(id: ID!): Boolean,
+    
+    #Entrada
+    createEntrada(fecha: String!, motivo: String!, hora: String!): Entrada,
+    updateEntrada(id: ID!, fecha: String, motivo: String, hora: String): Entrada,
+    deleteEntrada(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -214,8 +223,8 @@ type NotaVenta {
 }
 
 type Marca {
-    id: ID
-    nombre: String
+    id: ID,
+    nombre: String,
     porcentaje: Float
 }
 
@@ -230,31 +239,31 @@ type Vehiculo {
 }
 
 type Producto {
-  id: ID
-  nombre: String
-  descripcion: String
-  precio: Float
+  id: ID,
+  nombre: String,
+  descripcion: String,
+  precio: Float,
   stock: String
 }
 
 type Proveedor {
-  id: ID
-  nombre: String
-  direccion: String
-  celular: String
-  email: String
+  id: ID,
+  nombre: String,
+  direccion: String,
+  celular: String,
+  email: String,
   descripcion: String
 }
 
 type Salida {
-  id: ID
-  fecha: String
-  motivo: String
+  id: ID,
+  fecha: String,
+  motivo: String,
   hora: String
 }
 
 type DetalleSalida {
-  id: ID
+  id: ID,
   cantidad: Int
 }
 
@@ -284,12 +293,12 @@ type DetalleDePago {
 }
 
 type OrdenDeTrabajo {
-    id: ID
-    fechaInicio: String
-    fechaFin: String
-    estado: String
-    observacion: String
-    personalId: String
+    id: ID,
+    fechaInicio: String,
+    fechaFin: String,
+    estado: String,
+    observacion: String,
+    personalId: String,
     detalleVentaServicioId: String
 }
 
@@ -298,4 +307,11 @@ type NotaCompra {
     fecha: String,
     montoTotal: Float,
     personalId: String
+}
+
+type Entrada {
+    id: ID,
+    fecha: String,
+    motivo: String,
+    hora: String
 }
