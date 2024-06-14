@@ -65,6 +65,10 @@ type Query {
     getAllOrdenesDeTrabajo: [OrdenDeTrabajo],
     getAllOrdenesDeTrabajoByDetalleVentaServicioId(detalleVentaServicioId: ID!): [OrdenDeTrabajo],
     getAllOrdenesDeTrabajoByPersonalId(personalId: String!): [OrdenDeTrabajo],
+    
+    #NotaCompra
+    getAllNotasCompra: [NotaCompra],
+    getNotaCompraById(id: ID!): NotaCompra,
 }
 
 type Mutation {
@@ -147,6 +151,11 @@ type Mutation {
     createOrdenDeTrabajo(fechaInicio: String!, fechaFin: String!, estado: String!, observacion: String!, personalId: String!, detalleVentaServicioId: String!): OrdenDeTrabajo,
     updateOrdenDeTrabajo(id: ID!, fechaInicio: String, fechaFin: String, estado: String, observacion: String, personalId: String, detalleVentaServicioId: String): OrdenDeTrabajo,
     deleteOrdenDeTrabajo(id: ID!): Boolean,
+    
+    #NotaCompra
+    createNotaCompra(fecha: String!, montoTotal: Float!, personalId: String!): NotaCompra,
+    updateNotaCompra(id: ID!, fecha: String, montoTotal: Float, personalId: String): NotaCompra,
+    deleteNotaCompra(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -282,4 +291,11 @@ type OrdenDeTrabajo {
     observacion: String
     personalId: String
     detalleVentaServicioId: String
+}
+
+type NotaCompra {
+    id: ID,
+    fecha: String,
+    montoTotal: Float,
+    personalId: String
 }
