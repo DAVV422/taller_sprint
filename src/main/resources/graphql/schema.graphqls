@@ -37,8 +37,8 @@ type Query {
     getSalidaById(id: ID!): Salida,
     
     #DetalleSalida
-    getAllDetalleSalida: [DetalleSalida],
     getDetalleSalidaById(id: ID!): DetalleSalida,
+    getAllDetalleSalidaOfNotaSalida(notaSalidaId: ID!): [DetalleSalida],
     
     #Proveedor
     getAllProveedor: [Proveedor],
@@ -139,8 +139,7 @@ type Mutation {
     deleteSalida(id: ID!): Boolean,
     
     #DetalleSalida
-    createDetalleSalida(cantidad: String!): DetalleSalida,
-    updateDetalleSalida(id: ID!, cantidad: String): DetalleSalida,
+    createDetalleSalida(cantidad: Int!, productoId: ID!, notaSalidaId: ID!): DetalleSalida,
     deleteDetalleSalida(id: ID!): Boolean,
     
     #Proveedor
@@ -296,8 +295,10 @@ type Salida {
 }
 
 type DetalleSalida {
-  id: ID,
-  cantidad: Int
+  	id: ID,
+    cantidad: Int,
+    productoId: String,
+    notaSalidaId: String
 }
 
 type DetalleVentaServicio {

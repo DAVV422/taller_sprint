@@ -15,4 +15,6 @@ public class DetalleSalida {
     @Id
     private String id;
     private Integer cantidad;
+    private String productoId;
+    private String notaSalidaId;
 }
