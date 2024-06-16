@@ -86,6 +86,9 @@ type Query {
     getDetalleDevolucionById(id: ID!): DetalleDevolucion,
     getAllDetalleDevolucionOfNotaDevolucion(notaDevolucionId: ID!): [DetalleDevolucion],
     
+    #DetalleEntrada
+    getDetalleEntradaById(id: ID!): DetalleEntrada,
+    getAllDetalleEntradaOfNotaEntrada(notaEntradaId: ID!): [DetalleEntrada],
 }
 
 type Mutation {
@@ -191,6 +194,10 @@ type Mutation {
     #DetalleDevolucion
     createDetalleDevolucion(cantidad: Int!, monto: Float!, productoId: ID!, notaDevolucionId: ID!): DetalleDevolucion,
     deleteDetalleDevolucion(id: ID!): Boolean,
+    
+    #DetalleEntrada
+    createDetalleEntrada(cantidad: Int!, productoId: ID!, notaEntradaId: ID!): DetalleEntrada,
+    deleteDetalleEntrada(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -364,4 +371,11 @@ type DetalleDevolucion {
     monto: Float,
     productoId: String,
     notaDevolucionId: String
+}
+
+type DetalleEntrada {
+    id: ID,
+    cantidad: Int,
+    productoId: String,
+    notaEntradaId: String
 }
