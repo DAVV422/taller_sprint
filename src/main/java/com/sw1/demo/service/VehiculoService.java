@@ -16,7 +16,12 @@ public class VehiculoService {
     private final VehiculoRepository vehiculoRepository;
 
     public Vehiculo createVehiculo(Vehiculo vehiculo) {
-        return vehiculoRepository.save(vehiculo);
+    	List<Vehiculo> vehiculoDuplicado = vehiculoRepository.findByMatricula(vehiculo.getMatricula());
+    	System.out.println(vehiculoDuplicado);
+    	if(vehiculoDuplicado.isEmpty()) {
+    		return vehiculoRepository.save(vehiculo);
+    	}
+    	return null;
     }
 
     public Vehiculo updateVehiculo(String id, Vehiculo vehiculoDetails) {
@@ -29,6 +34,14 @@ public class VehiculoService {
             return vehiculoRepository.save(vehiculo);
         }
         return null;
+    }
+    
+    public Vehiculo getVehiculoByMatricula(String matricula) {
+        List<Vehiculo> vehiculo = vehiculoRepository.findByMatricula(matricula);
+        if(vehiculo.isEmpty()) {
+        	return null;
+        }
+        return vehiculo.get(0);
     }
 
     public List<Vehiculo> getAllVehiculos() {

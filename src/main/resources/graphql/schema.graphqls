@@ -31,6 +31,7 @@ type Query {
     #Vehiculo
     getAllVehiculos: [Vehiculo],
     getVehiculoById(id: ID!): Vehiculo,
+    getVehiculoByMatricula(matricula: String!): Vehiculo
     
     #Salida
     getAllSalida: [Salida],

@@ -29,6 +29,12 @@ public class VehiculoController {
         log.info("Query Vehiculo by Id {}:", id);
         return vehiculoService.getVehiculoById(id);
     }
+    
+    @QueryMapping
+    public Vehiculo getVehiculoByMatricula(@Argument String matricula) {
+        log.info("Query Vehiculo by Matricula {}:", matricula);
+        return vehiculoService.getVehiculoByMatricula(matricula);
+    }
 
     @MutationMapping
     public Vehiculo createVehiculo(@Argument String matricula, @Argument String color, @Argument String descripcion, @Argument String modelo, @Argument String marcaId) {
