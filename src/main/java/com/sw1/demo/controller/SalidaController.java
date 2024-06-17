@@ -1,8 +1,5 @@
 package com.sw1.demo.controller;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +33,25 @@ public class SalidaController {
     }
 
     @MutationMapping
-    public Salida createSalida(@Argument String fecha, @Argument String motivo, @Argument String hora) {
+    public Salida createSalida(@Argument String fecha, @Argument String motivo, @Argument String hora,
+    		@Argument String productoId,@Argument Integer cantidad) {
+    	Salida salida = new Salida();
+        salida.setFecha(fecha);
+        salida.setMotivo("salida por venta con codigo producto ;"+productoId+" glosa "+motivo);
+        salida.setHora(hora);
+        salida.setProductoId(productoId);
+        salida = salidaService.createSalida(salida,productoId,cantidad);
+    	return salida;
+    }
+    
+    @MutationMapping
+    public Salida createSalidaManual(@Argument String fecha, @Argument String motivo, @Argument String hora,
+    		@Argument String productoId,@Argument Integer cantidad) {
     	Salida Salida = new Salida();
         Salida.setFecha(fecha);
         Salida.setMotivo(motivo);
         Salida.setHora(hora);
-    	return salidaService.createSalida(Salida);
+    	return salidaService.createSalida(Salida,productoId,cantidad);
     }
 
     @MutationMapping

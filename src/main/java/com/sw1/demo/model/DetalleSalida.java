@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 public class DetalleSalida {
     @Id
     private String id;
-    private Float cantidad;
-    private String descripcion;
+    private Integer cantidad;
+    private String productoId;
+    private String notaSalidaId;
+    private String salidaId;
 }

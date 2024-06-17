@@ -1,7 +1,5 @@
 package com.sw1.demo.model;
 
-import java.time.LocalTime;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,4 +18,5 @@ public class Salida {
     private String fecha;
     private String motivo;
     private String hora;
+    private String productoId;
 }

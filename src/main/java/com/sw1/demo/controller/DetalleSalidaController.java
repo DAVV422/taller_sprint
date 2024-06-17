@@ -1,8 +1,5 @@
 package com.sw1.demo.controller;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,37 +21,31 @@ public class DetalleSalidaController {
     private DetalleSalidaService detalleSalidaService;
 
     @QueryMapping
-    public List<DetalleSalida> getAllDetalleSalida() {
-        log.info("Query All DetalleSalida");
-        return detalleSalidaService.getAllDetalleSalida();
-    }
-
-    @QueryMapping
     public DetalleSalida getDetalleSalidaById(@Argument String id) {
         log.info("Query DetalleSalida by Id {}:", id);
         return detalleSalidaService.getDetalleSalidaById(id);
     }
 
-    @MutationMapping
-    public DetalleSalida createDetalleSalida(@Argument Float cantidad,@Argument String descripcion) {
-    	DetalleSalida DetalleSalida = new DetalleSalida();
-    	DetalleSalida.setCantidad(cantidad);
-    	DetalleSalida.setDescripcion(descripcion);
-    	return detalleSalidaService.createDetalleSalida(DetalleSalida);
+    @QueryMapping
+    public List<DetalleSalida> getAllDetalleSalidaOfNotaSalida(@Argument String notaSalidaId) {
+        log.info("Query DetalleSalida of NotaSalida by Id {}:", notaSalidaId);
+        return detalleSalidaService.getAllDetalleSalidaOfNotaSalida(notaSalidaId);
     }
 
     @MutationMapping
-    public DetalleSalida updateDetalleSalida(@Argument String id,@Argument Float cantidad,@Argument String descripcion) {
-    	DetalleSalida DetalleSalida = new DetalleSalida();
-    	DetalleSalida.setId(id);
-    	DetalleSalida.setCantidad(cantidad);
-    	DetalleSalida.setDescripcion(descripcion);
-        return detalleSalidaService.updateDetalleSalida(id, DetalleSalida);
+    public DetalleSalida createDetalleSalida(@Argument Integer cantidad, @Argument String productoId, @Argument String notaSalidaId) {
+        DetalleSalida detalleSalida = new DetalleSalida();
+        detalleSalida.setCantidad(cantidad);
+        detalleSalida.setProductoId(productoId);
+        detalleSalida.setNotaSalidaId(notaSalidaId);
+        log.info("Create DetalleSalida:", detalleSalida.toString());
+        return detalleSalidaService.createDetalleSalida(detalleSalida);
     }
 
     @MutationMapping
     public Boolean deleteDetalleSalida(@Argument String id) {
     	detalleSalidaService.deleteDetalleSalida(id);
+        log.info("Delete DetalleSalida by Id {}:", id);
         return true;
     }
 }

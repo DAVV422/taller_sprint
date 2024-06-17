@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sw1.demo.model.DetalleSalida;
-import com.sw1.demo.model.Proveedor;
 import com.sw1.demo.repository.DetalleSalidaRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -15,28 +14,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DetalleSalidaService {
 
-    @Autowired
+	@Autowired
     private final DetalleSalidaRepository detalleSalidaRepository;
 
-    public DetalleSalida createDetalleSalida(DetalleSalida detalleSalida) {
-        return detalleSalidaRepository.save(detalleSalida);
-    }
-
-    public DetalleSalida updateDetalleSalida(String id, DetalleSalida detalleSalidaDetalle) {
-    	DetalleSalida detalleSalida = detalleSalidaRepository.findById(id).orElse(null);
-        if (detalleSalida != null) {
-        	detalleSalida.setCantidad(detalleSalidaDetalle.getCantidad());
-            return detalleSalidaRepository.save(detalleSalida);
-        }
-        return null;
-    }
-
-    public List<DetalleSalida> getAllDetalleSalida() {
-        return detalleSalidaRepository.findAll();
+    public DetalleSalida createDetalleSalida(DetalleSalida detalleEntrada) {
+        return detalleSalidaRepository.save(detalleEntrada);
     }
 
     public DetalleSalida getDetalleSalidaById(String id) {
         return detalleSalidaRepository.findById(id).orElse(null);
+    }
+
+    public List<DetalleSalida> getAllDetalleSalidaOfNotaSalida(String notaSalidaId) {
+        return detalleSalidaRepository.findByNotaSalidaId(notaSalidaId);
     }
 
     public void deleteDetalleSalida(String id) {

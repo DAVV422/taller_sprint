@@ -1,7 +1,5 @@
 package com.sw1.demo.model;
 
-import java.math.BigDecimal;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -2,7 +2,7 @@ type Query {
 	#Usuario
     allUsuarios: [Usuario],
     usuarioById(id: ID!): Usuario,
-    login(email: String!, password: String!): Usuario
+    login(email: String!, password: String!): Usuario,
     
     #Personal
     getAllPersonal: [Personal],
@@ -37,8 +37,8 @@ type Query {
     getSalidaById(id: ID!): Salida,
     
     #DetalleSalida
-    getAllDetalleSalida: [DetalleSalida],
     getDetalleSalidaById(id: ID!): DetalleSalida,
+    getAllDetalleSalidaOfNotaSalida(notaSalidaId: ID!): [DetalleSalida],
     
     #Proveedor
     getAllProveedor: [Proveedor],
@@ -65,22 +65,46 @@ type Query {
     getAllOrdenesDeTrabajo: [OrdenDeTrabajo],
     getAllOrdenesDeTrabajoByDetalleVentaServicioId(detalleVentaServicioId: ID!): [OrdenDeTrabajo],
     getAllOrdenesDeTrabajoByPersonalId(personalId: String!): [OrdenDeTrabajo],
+    
+    #NotaCompra
+    getAllNotasCompra: [NotaCompra],
+    getNotaCompraById(id: ID!): NotaCompra,
+    
+    #Entrada
+    getAllEntradas: [Entrada],
+    getEntradaById(id: ID!): Entrada,
+    
+    #NotaDevolucion
+    getAllNotasDevolucion: [NotaDevolucion],
+    getNotaDevolucionById(id: ID!): NotaDevolucion,
+    
+    #DetalleCompra
+    getDetalleCompraById(id: ID!): DetalleCompra,
+    getAllDetalleCompraOfNotaCompra(notaCompraId: ID!): [DetalleCompra],
+    
+    #DetalleDevolucion
+    getDetalleDevolucionById(id: ID!): DetalleDevolucion,
+    getAllDetalleDevolucionOfNotaDevolucion(notaDevolucionId: ID!): [DetalleDevolucion],
+    
+    #DetalleEntrada
+    getDetalleEntradaById(id: ID!): DetalleEntrada,
+    getAllDetalleEntradaOfNotaEntrada(notaEntradaId: ID!): [DetalleEntrada],
 }
 
 type Mutation {
 
 	#Usuario
-    createUsuario(nombreUsuario: String!, email: String!, password: String!, tipo: String!, usuarioId: String!): Usuario,
+    createUsuario(nombreUsuario: String!, email: String!, password: String!, tipo: String!): Usuario,
     updateUsuario(id: ID!, nombreUsuario: String, email: String, password: String, tipo: String): Usuario,
     deleteUsuario(id: ID!): Boolean,
     
     #Personal
-    createPersonal(nombre: String!, apellido: String!, ci: String!, direccion: String!, celular: String!, fechaNacimiento: String!, usuarioId: String!): Personal,
+    createPersonal(nombre: String!, apellido: String!, ci: String!, direccion: String!, celular: String!, fechaNacimiento: String!, usuarioId: String): Personal,
     updatePersonal(id: ID!, nombre: String, apellido: String, ci: String, direccion: String, celular: String, fechaNacimiento: String): Personal,
     deletePersonal(id: ID!): Boolean,
     
     #Cliente
-    createCliente(nombre: String!, apellido: String!, celular: String!, nit: String!, usuarioId: String!): Cliente,
+    createCliente(nombre: String!, apellido: String!, celular: String!, nit: String!, usuarioId: String): Cliente,
     updateCliente(id: ID!, nombre: String, apellido: String, celular: String, nit: String, usuarioId: String): Cliente,
     deleteCliente(id: ID!): Boolean,
     
@@ -110,13 +134,13 @@ type Mutation {
     deleteVehiculo(id: ID!): Boolean,
     
     #Salida
-    createSalida(fecha: String!, motivo: String!, hora: String!): Salida,
+    createSalida(fecha: String!, motivo: String!, hora: String!,productoId :String!, cantidad:Int): Salida,
     updateSalida(id : ID!,fecha: String!, motivo: String!, hora: String!): Salida,
+    createSalidaManual(fecha: String!, motivo: String!, hora: String!,productoId :String!, cantidad:Int): Salida,
     deleteSalida(id: ID!): Boolean,
     
     #DetalleSalida
-    createDetalleSalida(cantidad: Float,descripcion: String!): DetalleSalida,
-    updateDetalleSalida(id: ID!, cantidad: Float,descripcion: String!): DetalleSalida,
+    createDetalleSalida(cantidad: Int!, productoId: ID!, notaSalidaId: ID!): DetalleSalida,
     deleteDetalleSalida(id: ID!): Boolean,
     
     #Proveedor
@@ -147,6 +171,33 @@ type Mutation {
     createOrdenDeTrabajo(fechaInicio: String!, fechaFin: String!, estado: String!, observacion: String!, personalId: String!, detalleVentaServicioId: String!): OrdenDeTrabajo,
     updateOrdenDeTrabajo(id: ID!, fechaInicio: String, fechaFin: String, estado: String, observacion: String, personalId: String, detalleVentaServicioId: String): OrdenDeTrabajo,
     deleteOrdenDeTrabajo(id: ID!): Boolean,
+    
+    #NotaCompra
+    createNotaCompra(fecha: String!, montoTotal: Float!, personalId: String!): NotaCompra,
+    updateNotaCompra(id: ID!, fecha: String, montoTotal: Float, personalId: String): NotaCompra,
+    deleteNotaCompra(id: ID!): Boolean,
+    
+    #Entrada
+    createEntrada(fecha: String!, motivo: String!, hora: String!,productoId: String!,cantidad: Int!): Entrada,
+    updateEntrada(id: ID!, fecha: String, motivo: String, hora: String): Entrada,
+    deleteEntrada(id: ID!): Boolean,
+    
+    #NotaDevolucion
+    createNotaDevolucion(fecha: String!, motivo: String!, montoTotal: Float!, notaVentaId: String!): NotaDevolucion,
+    updateNotaDevolucion(id: ID!, fecha: String, motivo: String, montoTotal: Float, notaVentaId: String): NotaDevolucion,
+    deleteNotaDevolucion(id: ID!): Boolean,
+    
+    #DetalleCompra
+    createDetalleCompra(monto: Float!, cantidad: Int!, productoId: ID!, notaCompraId: ID!): DetalleCompra,
+    deleteDetalleCompra(id: ID!): Boolean,
+    
+    #DetalleDevolucion
+    createDetalleDevolucion(cantidad: Int!, monto: Float!, productoId: ID!, notaDevolucionId: ID!): DetalleDevolucion,
+    deleteDetalleDevolucion(id: ID!): Boolean,
+    
+    #DetalleEntrada
+    createDetalleEntrada(cantidad: Int!, productoId: ID!, notaEntradaId: ID!): DetalleEntrada,
+    deleteDetalleEntrada(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -205,8 +256,8 @@ type NotaVenta {
 }
 
 type Marca {
-    id: ID
-    nombre: String
+    id: ID,
+    nombre: String,
     porcentaje: Float
 }
 
@@ -221,33 +272,36 @@ type Vehiculo {
 }
 
 type Producto {
-  id: ID
-  nombre: String
-  descripcion: String
-  precio: Float
+  id: ID,
+  nombre: String,
+  descripcion: String,
+  precio: Float,
   stock: String
 }
 
 type Proveedor {
-  id: ID
-  nombre: String
-  direccion: String
-  celular: String
-  email: String
+  id: ID,
+  nombre: String,
+  direccion: String,
+  celular: String,
+  email: String,
   descripcion: String
 }
 
 type Salida {
-  id: ID
-  fecha: String
-  motivo: String
-  hora: String
+  id: ID,
+  fecha: String,
+  motivo: String,
+  hora: String,
+  productoId: String,
+  cantidad :Int
 }
 
 type DetalleSalida {
-  id: ID
-  cantidad: Float
-  descripcion: String
+  	id: ID,
+    cantidad: Int,
+    productoId: String,
+    notaSalidaId: String
 }
 
 type DetalleVentaServicio {
@@ -276,11 +330,58 @@ type DetalleDePago {
 }
 
 type OrdenDeTrabajo {
-    id: ID
-    fechaInicio: String
-    fechaFin: String
-    estado: String
-    observacion: String
-    personalId: String
+    id: ID,
+    fechaInicio: String,
+    fechaFin: String,
+    estado: String,
+    observacion: String,
+    personalId: String,
     detalleVentaServicioId: String
+}
+
+type NotaCompra {
+    id: ID,
+    fecha: String,
+    montoTotal: Float,
+    personalId: String
+}
+
+type Entrada {
+    id: ID,
+    fecha: String,
+    motivo: String,
+    hora: String,
+    productoId: String,
+    cantidad: Int
+}
+
+type NotaDevolucion {
+    id: ID,
+    fecha: String,
+    motivo: String,
+    montoTotal: Float,
+    notaVentaId: String
+}
+
+type DetalleCompra {
+    id: ID,
+    monto: Float,
+    cantidad: Int,
+    productoId: String,
+    notaCompraId: String
+}
+
+type DetalleDevolucion {
+    id: ID,
+    cantidad: Int,
+    monto: Float,
+    productoId: String,
+    notaDevolucionId: String
+}
+
+type DetalleEntrada {
+    id: ID,
+    cantidad: Int,
+    productoId: String,
+    notaEntradaId: String
 }
