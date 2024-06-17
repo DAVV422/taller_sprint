@@ -31,22 +31,18 @@ public class NotaVentaController {
     }
 
     @MutationMapping
-    public NotaVenta createNotaVenta(@Argument String fecha, @Argument Double total, @Argument Double saldo, @Argument Double interes) {
+    public NotaVenta createNotaVenta(@Argument String fecha, @Argument Double interes) {
         NotaVenta notaVenta = new NotaVenta();
         notaVenta.setFecha(fecha);
-        notaVenta.setTotal(total);
-        notaVenta.setSaldo(saldo);
         notaVenta.setInteres(interes);        
         log.info("Create NotaVenta:", notaVenta.toString());
         return notaVentaService.createNotaVenta(notaVenta);
     }
 
     @MutationMapping
-    public NotaVenta updateNotaVenta(@Argument String id, @Argument String fecha, @Argument Double total, @Argument Double saldo, @Argument Double interes) {
+    public NotaVenta updateNotaVenta(@Argument String id, @Argument String fecha, @Argument Double interes) {
         NotaVenta notaVentaDetails = new NotaVenta();        
         notaVentaDetails.setFecha(fecha);
-        notaVentaDetails.setTotal(total);
-        notaVentaDetails.setSaldo(saldo);
         notaVentaDetails.setInteres(interes);               
         log.info("Update NotaVenta:", notaVentaDetails.toString());
         return notaVentaService.updateNotaVenta(id, notaVentaDetails);

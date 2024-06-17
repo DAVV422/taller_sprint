@@ -20,6 +20,8 @@ public class NotaVentaService {
         // Generar un código de seguimiento de 8 caracteres
         //String codigoSeguimiento = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
         //notaVenta.setCodigoSeguimiento(codigoSeguimiento);
+    	notaVenta.setTotal(Double.valueOf(0));
+    	notaVenta.setSaldo(Double.valueOf(0));
     	notaVenta.setSubtotal(Double.valueOf(0));
         return notaVentaRepository.save(notaVenta);
     }
@@ -28,8 +30,6 @@ public class NotaVentaService {
         NotaVenta notaVenta = notaVentaRepository.findById(id).orElse(null);
         if (notaVenta != null) {
             notaVenta.setFecha(notaVentaDetails.getFecha() != null ? notaVentaDetails.getFecha() : notaVenta.getFecha());
-            notaVenta.setTotal(notaVentaDetails.getTotal() != null ? notaVentaDetails.getTotal() : notaVenta.getTotal());
-            notaVenta.setSaldo(notaVentaDetails.getSaldo() != null ? notaVentaDetails.getSaldo() : notaVenta.getSaldo());
             notaVenta.setInteres(notaVentaDetails.getInteres() != null ? notaVentaDetails.getInteres() : notaVenta.getInteres());                       
             return notaVentaRepository.save(notaVenta);
         }

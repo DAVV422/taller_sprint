@@ -120,8 +120,8 @@ type Mutation {
     deleteServicio(id: ID!): Boolean,
     
     #NotaVenta
-    createNotaVenta(fecha: String!, total: Float!, saldo: Float!, interes: Float!): NotaVenta,
-    updateNotaVenta(id: ID!, fecha: String, total: Float, saldo: Float, interes: Float): NotaVenta,
+    createNotaVenta(fecha: String!, interes: Float!): NotaVenta,
+    updateNotaVenta(id: ID!, fecha: String, interes: Float): NotaVenta,
     deleteNotaVenta(id: ID!): Boolean,
     
     #Marca    
