@@ -16,6 +16,7 @@ public class ServicioService {
     private final ServicioRepository servicioRepository;
 
     public Servicio createServicio(Servicio servicio) {
+    	servicio.setCategoriaIA("no corresponde");
         return servicioRepository.save(servicio);
     }
 

@@ -18,4 +18,5 @@ public class Servicio {
     private String descripcion;
     private String tipo;
     private Double tarifaBase;
+    private String categoriaIA;
 }
