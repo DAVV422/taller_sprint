@@ -90,6 +90,10 @@ type Query {
     #DetalleEntrada
     getDetalleEntradaById(id: ID!): DetalleEntrada,
     getAllDetalleEntradaOfNotaEntrada(notaEntradaId: ID!): [DetalleEntrada],
+    
+    #DetalleVentaProducto
+    getDetalleVentaProductoById(id: ID!): DetalleVentaProducto,
+    getAllDetalleVentaProductoOfNotaVenta(notaVentaId: ID!): [DetalleVentaProducto],
 }
 
 type Mutation {
@@ -198,6 +202,10 @@ type Mutation {
     #DetalleEntrada
     createDetalleEntrada(cantidad: Int!, productoId: ID!, notaEntradaId: ID!): DetalleEntrada,
     deleteDetalleEntrada(id: ID!): Boolean,
+    
+    #DetalleVentaProducto    
+    createDetalleVentaProducto(precioUnitario: Float!, cantidad: Int!, montoTotal: Float!, notaVentaId: ID!, productoId: ID!): DetalleVentaProducto,
+    deleteDetalleVentaProducto(id: ID!): Boolean,
 }
 
 type Usuario {
@@ -253,6 +261,15 @@ type NotaVenta {
     interes: Float,
     subtotal: Float,
     codigoSeguimiento: String
+}
+
+type DetalleVentaProducto {
+    id: ID,
+    precioUnitario: Float,
+    cantidad: Int,
+    montoTotal: Float,
+    notaVentaId: String,
+    productoId: String
 }
 
 type Marca {
