@@ -31,9 +31,10 @@ public class DetalleVentaServicioController {
     }
 
     @MutationMapping
-    public DetalleVentaServicio createDetalleVentaServicio(@Argument Double monto, @Argument String servicioId, @Argument String notaVentaId) {
+    public DetalleVentaServicio createDetalleVentaServicio(@Argument String vehiculoId, @Argument String servicioId, @Argument String notaVentaId) {
         DetalleVentaServicio detalleVentaServicio = new DetalleVentaServicio();
-        detalleVentaServicio.setMonto(monto);
+        detalleVentaServicio.setMonto(Double.valueOf(0));
+        detalleVentaServicio.setVehiculoId(vehiculoId);
         detalleVentaServicio.setServicioId(servicioId);
         detalleVentaServicio.setNotaVentaId(notaVentaId);
         log.info("Create DetalleVentaServicio:", detalleVentaServicio.toString());

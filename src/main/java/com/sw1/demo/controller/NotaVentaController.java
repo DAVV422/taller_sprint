@@ -31,10 +31,11 @@ public class NotaVentaController {
     }
 
     @MutationMapping
-    public NotaVenta createNotaVenta(@Argument String fecha, @Argument Double interes) {
+    public NotaVenta createNotaVenta(@Argument String fecha, @Argument Double interes, @Argument String clienteId) {
         NotaVenta notaVenta = new NotaVenta();
         notaVenta.setFecha(fecha);
         notaVenta.setInteres(interes);        
+        notaVenta.setClienteId(clienteId);
         log.info("Create NotaVenta:", notaVenta.toString());
         return notaVentaService.createNotaVenta(notaVenta);
     }

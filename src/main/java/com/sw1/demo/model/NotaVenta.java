@@ -22,4 +22,5 @@ public class NotaVenta {
     private Double subtotal;
     private String codigoSeguimiento;
     private String salidaId;
+    private String clienteId;
 }

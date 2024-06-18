@@ -124,7 +124,7 @@ type Mutation {
     deleteServicio(id: ID!): Boolean,
     
     #NotaVenta
-    createNotaVenta(fecha: String!, interes: Float!): NotaVenta,
+    createNotaVenta(fecha: String!, interes: Float!, clienteId: String!): NotaVenta,
     updateNotaVenta(id: ID!, fecha: String, interes: Float): NotaVenta,
     deleteNotaVenta(id: ID!): Boolean,
     
@@ -159,7 +159,7 @@ type Mutation {
 	deleteProducto(id: String!): Boolean
 
     #DetalleVentaServicio
-    createDetalleVentaServicio(monto: Float!, servicioId: String!, notaVentaId: String!): DetalleVentaServicio,
+    createDetalleVentaServicio(vehiculoId: String!, servicioId: String!, notaVentaId: String!): DetalleVentaServicio,
     deleteDetalleVentaServicio(id: ID!): Boolean,
     
     #PlanDePago
@@ -261,7 +261,8 @@ type NotaVenta {
     saldo: Float,
     interes: Float,
     subtotal: Float,
-    codigoSeguimiento: String
+    codigoSeguimiento: String,
+    clienteId: String
 }
 
 type DetalleVentaProducto {
@@ -325,6 +326,7 @@ type DetalleSalida {
 type DetalleVentaServicio {
     id: ID,
     monto: Float,
+    vehiculoId: String,
     servicioId: String,
     notaVentaId: String
 }

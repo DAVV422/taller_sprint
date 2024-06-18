@@ -17,4 +17,5 @@ public class DetalleVentaServicio {
     private Double monto;
     private String servicioId;
     private String notaVentaId;
+    private String vehiculoId;
 }

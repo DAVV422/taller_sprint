@@ -1,9 +1,15 @@
 package com.sw1.demo.service;
 
 import com.sw1.demo.model.DetalleVentaServicio;
+import com.sw1.demo.model.Marca;
 import com.sw1.demo.model.NotaVenta;
+import com.sw1.demo.model.Servicio;
+import com.sw1.demo.model.Vehiculo;
 import com.sw1.demo.repository.DetalleVentaServicioRepository;
+import com.sw1.demo.repository.MarcaRepository;
 import com.sw1.demo.repository.NotaVentaRepository;
+import com.sw1.demo.repository.ServicioRepository;
+import com.sw1.demo.repository.VehiculoRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +27,22 @@ public class DetalleVentaServicioService {
     
     @Autowired
     private final NotaVentaRepository notaVentaRepository;
+    
+    @Autowired
+    private final VehiculoRepository vehiculoRepository;
+    
+    @Autowired
+    private final MarcaRepository marcaRepository;
+    
+    @Autowired
+    private final ServicioRepository servicioRepository;
 
     public DetalleVentaServicio createDetalleVentaServicio(DetalleVentaServicio detalleVentaServicio) {
+    	Vehiculo vehiculo = vehiculoRepository.findById(detalleVentaServicio.getVehiculoId()).orElse(null);
+    	Marca marca = marcaRepository.findById(vehiculo.getMarcaId()).orElse(null);
+    	Servicio servicio = servicioRepository.findById(detalleVentaServicio.getServicioId()).orElse(null);
+    	Double monto = marca.getPorcentaje() * servicio.getTarifaBase();
+    	detalleVentaServicio.setMonto(monto + servicio.getTarifaBase());
     	DetalleVentaServicio detalleCreado = detalleVentaServicioRepository.save(detalleVentaServicio);
     	NotaVenta notaVenta = notaVentaRepository.findById(detalleVentaServicio.getNotaVentaId()).orElse(null);
         if (notaVenta.getCodigoSeguimiento() == null) {
