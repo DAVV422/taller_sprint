@@ -1,12 +1,19 @@
 package com.sw1.demo.controller;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+
+import com.sw1.demo.model.DetalleEntrada;
 import com.sw1.demo.model.Entrada;
+import com.sw1.demo.model.Producto;
+import com.sw1.demo.service.DetalleEntradaService;
 import com.sw1.demo.service.EntradaService;
+import com.sw1.demo.service.ProductoService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -15,7 +22,8 @@ public class EntradaController {
 
     @Autowired
     private EntradaService entradaService;
-
+    
+    
     @QueryMapping
     public List<Entrada> getAllEntradas() {
         log.info("Query All Entradas");
@@ -29,13 +37,16 @@ public class EntradaController {
     }
 
     @MutationMapping
-    public Entrada createEntrada(@Argument String fecha, @Argument String motivo, @Argument String hora) {
+    public Entrada createEntrada(@Argument String fecha, @Argument String motivo, @Argument String hora, 
+    		@Argument String productoId,@Argument Integer cantidad) {
         Entrada entrada = new Entrada();
         entrada.setFecha(fecha);
-        entrada.setMotivo(motivo);
+        entrada.setMotivo("Entrada por compra producto:"+productoId+" glosa :"+motivo);
         entrada.setHora(hora);
+        entrada.setProductoId(productoId);
         log.info("Create Entrada:", entrada.toString());
-        return entradaService.createEntrada(entrada);
+        entrada = entradaService.createEntrada(entrada,productoId,cantidad);
+        return entrada;
     }
 
     @MutationMapping

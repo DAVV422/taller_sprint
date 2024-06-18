@@ -134,8 +134,9 @@ type Mutation {
     deleteVehiculo(id: ID!): Boolean,
     
     #Salida
-    createSalida(fecha: String!, motivo: String!, hora: String!): Salida,
+    createSalida(fecha: String!, motivo: String!, hora: String!,productoId :String!, cantidad:Int): Salida,
     updateSalida(id : ID!,fecha: String!, motivo: String!, hora: String!): Salida,
+    createSalidaManual(fecha: String!, motivo: String!, hora: String!,productoId :String!, cantidad:Int): Salida,
     deleteSalida(id: ID!): Boolean,
     
     #DetalleSalida
@@ -177,7 +178,7 @@ type Mutation {
     deleteNotaCompra(id: ID!): Boolean,
     
     #Entrada
-    createEntrada(fecha: String!, motivo: String!, hora: String!): Entrada,
+    createEntrada(fecha: String!, motivo: String!, hora: String!,productoId: String!,cantidad: Int!): Entrada,
     updateEntrada(id: ID!, fecha: String, motivo: String, hora: String): Entrada,
     deleteEntrada(id: ID!): Boolean,
     
@@ -291,7 +292,9 @@ type Salida {
   id: ID,
   fecha: String,
   motivo: String,
-  hora: String
+  hora: String,
+  productoId: String,
+  cantidad :Int
 }
 
 type DetalleSalida {
@@ -347,7 +350,9 @@ type Entrada {
     id: ID,
     fecha: String,
     motivo: String,
-    hora: String
+    hora: String,
+    productoId: String,
+    cantidad: Int
 }
 
 type NotaDevolucion {

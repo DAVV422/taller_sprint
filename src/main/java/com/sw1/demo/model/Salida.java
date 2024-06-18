@@ -18,4 +18,5 @@ public class Salida {
     private String fecha;
     private String motivo;
     private String hora;
+    private String productoId;
 }
