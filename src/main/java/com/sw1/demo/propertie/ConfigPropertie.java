@@ -33,6 +33,13 @@ public class ConfigPropertie {
 	 * ==================== [INICIO] Registros genericos ====================
 	 */
 	//Mensajes
-	public static final String url_dashboard = prop.getProperty("url.servicio.dashboard");
-
+	public static final String url_login = prop.getProperty("url.login");
+	public static final String url_login_usuario = prop.getProperty("url.login.username");
+	public static final String url_login_password = prop.getProperty("url.login.pass");
+	
+	public static final String url_createClientes = prop.getProperty("url.createClientes");
+	public static final String url_createEmpresas = prop.getProperty("url.createEmpresas");
+	public static final String url_createOrdenes = prop.getProperty("url.createOrdenes");
+	public static final String url_createEmpleados = prop.getProperty("url.createEmpleados");
+	public static final String url_createServicios = prop.getProperty("url.createServicios");
 }
