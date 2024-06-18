@@ -1,16 +1,13 @@
 package com.sw1.demo.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sw1.demo.model.DetalleEntrada;
 import com.sw1.demo.model.DetalleSalida;
 import com.sw1.demo.model.Producto;
 import com.sw1.demo.model.Salida;
-import com.sw1.demo.repository.DetalleSalidaRepository;
 import com.sw1.demo.repository.SalidaRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -22,8 +19,6 @@ public class SalidaService {
     @Autowired
     private final SalidaRepository salidaRepository;
     
-    @Autowired
-    private final DetalleSalidaRepository detalleSalidaRepository;
     
     @Autowired
     private final DetalleSalidaService detalleSalidaService;
@@ -36,7 +31,7 @@ public class SalidaService {
     	DetalleSalida detalleSalida=new DetalleSalida();
     	detalleSalida.setProductoId(productoId);
     	detalleSalida.setCantidad(cantidad);
-    	detalleSalida.setSalidaId(salida.getId());
+    	detalleSalida.setNotaSalidaId(salida.getId());
 		//creacion de detalle
     	detalleSalidaService.createDetalleSalida(detalleSalida);
         //actualizar stock

@@ -17,5 +17,4 @@ public class DetalleEntrada {
     private Integer cantidad;
     private String productoId;
     private String notaEntradaId;
-    private String entradaId;
 }

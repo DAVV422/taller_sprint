@@ -7,12 +7,8 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import com.sw1.demo.model.DetalleEntrada;
 import com.sw1.demo.model.Entrada;
-import com.sw1.demo.model.Producto;
-import com.sw1.demo.service.DetalleEntradaService;
 import com.sw1.demo.service.EntradaService;
-import com.sw1.demo.service.ProductoService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +18,6 @@ public class EntradaController {
 
     @Autowired
     private EntradaService entradaService;
-    
     
     @QueryMapping
     public List<Entrada> getAllEntradas() {

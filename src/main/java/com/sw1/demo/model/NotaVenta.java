@@ -15,9 +15,11 @@ public class NotaVenta {
     @Id
     private String id;
     private String fecha;
+    private String hora;
     private Double total;
     private Double saldo;
     private Double interes;
     private Double subtotal;
     private String codigoSeguimiento;
+    private String salidaId;
 }

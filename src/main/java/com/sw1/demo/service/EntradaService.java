@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.sw1.demo.model.DetalleEntrada;
 import com.sw1.demo.model.Entrada;
 import com.sw1.demo.model.Producto;
-import com.sw1.demo.repository.DetalleEntradaRepository;
 import com.sw1.demo.repository.EntradaRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,9 +20,6 @@ public class EntradaService {
     private final EntradaRepository entradaRepository;
     
     @Autowired
-    private final DetalleEntradaRepository detalleentradaRepository;
-    
-    @Autowired
     private DetalleEntradaService detalleentradaService;
 
     @Autowired
@@ -34,7 +30,7 @@ public class EntradaService {
         DetalleEntrada detalleEntrada=new DetalleEntrada();
         detalleEntrada.setProductoId(productoId);
         detalleEntrada.setCantidad(cantidad);
-        detalleEntrada.setEntradaId(entrada.getId());
+        detalleEntrada.setNotaEntradaId(entrada.getId());
 		//creacion de detalle
         detalleentradaService.createDetalleEntrada(detalleEntrada);
         //actualizar stock
